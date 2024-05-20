@@ -14,7 +14,7 @@ I use [Rust][rust], [Diesel][diesel] as an ORM, [Actix Web][actix-web] as a web 
 
 ### Frontend
 
-I use [Svelte][svelte] (to be precise [Svelte Kit]) as a frontend framework, [TailwindCSS][tailwind] for the styling and [urql] as a connector to the backend.
+I use [Svelte][svelte] (to be precise [Svelte Kit][svelte-kit]) as a frontend framework, [TailwindCSS][tailwind] for the styling and [urql] as a connector to the backend.
 
 ## Backstory
 
