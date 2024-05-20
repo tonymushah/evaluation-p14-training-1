@@ -6,4 +6,7 @@ export default defineConfig({
 	test: {
 		include: ['app/**/*.{test,spec}.{js,ts}']
 	},
+	optimizeDeps: {
+		exclude: ['@urql/svelte']
+	}
 });
