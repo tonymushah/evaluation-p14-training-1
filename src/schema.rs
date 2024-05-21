@@ -1,6 +1,14 @@
 // @generated automatically by Diesel CLI.
 
 diesel::table! {
+    entree_stock (id_entree_stock) {
+        id_entree_stock -> Uuid,
+        laptop -> Uuid,
+        entree_date -> Timestamp,
+    }
+}
+
+diesel::table! {
     laptop (id_laptop) {
         id_laptop -> Uuid,
         type_processeur -> Nullable<Uuid>,
@@ -92,6 +100,7 @@ diesel::table! {
     }
 }
 
+diesel::joinable!(entree_stock -> laptop (laptop));
 diesel::joinable!(laptop -> reference_laptop (ref_laptop));
 diesel::joinable!(laptop -> type_carte_graphique (carte_graphique));
 diesel::joinable!(laptop -> type_clavier (type_clavier));
@@ -109,6 +118,7 @@ diesel::joinable!(type_carte_graphique -> marque (marque));
 diesel::joinable!(type_processeur -> marque (marque));
 
 diesel::allow_tables_to_appear_in_same_query!(
+    entree_stock,
     laptop,
     marque,
     point_vente,
