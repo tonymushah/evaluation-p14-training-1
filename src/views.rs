@@ -5,3 +5,11 @@ diesel::table! {
         frequence -> Decimal
     }
 }
+
+diesel::table! {
+    v_ram_laptop (laptop) {
+        laptop -> Uuid,
+        puissance -> Decimal,
+        frequence -> Decimal
+    }
+}
