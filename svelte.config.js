@@ -13,17 +13,17 @@ const config = {
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 		adapter: adapter(),
 		files: {
-		    hooks: {
-		        client: 'app/hooks.client',
-		        server: 'app/hooks.server',
-		        universal: 'app/hooks'
-		    },
-		    lib: 'app/lib',
-		    params: 'app/params',
-		    routes: 'app/routes',
-		    serviceWorker: 'app/service-worker',
-		    appTemplate: 'app/app.html',
-		    errorTemplate: 'app/error.html'
+			hooks: {
+				client: 'app/hooks.client',
+				server: 'app/hooks.server',
+				universal: 'app/hooks'
+			},
+			lib: 'app/lib',
+			params: 'app/params',
+			routes: 'app/routes',
+			serviceWorker: 'app/service-worker',
+			appTemplate: 'app/app.html',
+			errorTemplate: 'app/error.html'
 		}
 	}
 };
