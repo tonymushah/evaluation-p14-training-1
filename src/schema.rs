@@ -6,3 +6,15 @@ diesel::table! {
         desination -> Text,
     }
 }
+
+diesel::table! {
+    type_ram (id_type) {
+        id_type -> Uuid,
+        designation -> Text,
+    }
+}
+
+diesel::allow_tables_to_appear_in_same_query!(
+    marque,
+    type_ram,
+);
