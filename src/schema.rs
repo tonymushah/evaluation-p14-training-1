@@ -1,6 +1,18 @@
 // @generated automatically by Diesel CLI.
 
 diesel::table! {
+    laptop (id_laptop) {
+        id_laptop -> Uuid,
+        type_processeur -> Nullable<Uuid>,
+        carte_graphique -> Nullable<Uuid>,
+        ecran -> Nullable<Numeric>,
+        type_clavier -> Nullable<Uuid>,
+        prix_unitaire -> Nullable<Numeric>,
+        ref_laptop -> Uuid,
+    }
+}
+
+diesel::table! {
     marque (id_marque) {
         id_marque -> Uuid,
         desination -> Text,
@@ -62,6 +74,10 @@ diesel::table! {
     }
 }
 
+diesel::joinable!(laptop -> reference_laptop (ref_laptop));
+diesel::joinable!(laptop -> type_carte_graphique (carte_graphique));
+diesel::joinable!(laptop -> type_clavier (type_clavier));
+diesel::joinable!(laptop -> type_processeur (type_processeur));
 diesel::joinable!(ram_ref_laptop -> marque (marque));
 diesel::joinable!(ram_ref_laptop -> reference_laptop (ref_laptop));
 diesel::joinable!(ram_ref_laptop -> type_ram (type_ram));
@@ -72,6 +88,7 @@ diesel::joinable!(type_carte_graphique -> marque (marque));
 diesel::joinable!(type_processeur -> marque (marque));
 
 diesel::allow_tables_to_appear_in_same_query!(
+    laptop,
     marque,
     ram_ref_laptop,
     reference_laptop,
