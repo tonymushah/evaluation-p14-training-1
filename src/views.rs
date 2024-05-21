@@ -13,3 +13,16 @@ diesel::table! {
         frequence -> Decimal
     }
 }
+
+diesel::table! {
+    v_laptop (id_laptop) {
+        id_laptop -> Uuid,
+        nom -> Text,
+        type_processeur -> Uuid,
+        carte_graphique -> Uuid,
+        ecran -> Numeric,
+        type_clavier -> Uuid,
+        prix_unitaire -> Numeric,
+        ref_laptop -> Uuid
+    }
+}
