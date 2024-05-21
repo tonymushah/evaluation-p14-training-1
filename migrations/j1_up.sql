@@ -52,3 +52,29 @@ SELECT REF_LAPTOP,
 	AVG(FREQUENCE) AS FREQUENCE
 FROM RAM_REF_LAPTOP
 GROUP BY REF_LAPTOP;
+
+create table laptop(
+    id_laptop UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    type_processeur UUID REFERENCES type_processeur(id_type_processeur),
+    carte_graphique UUID REFERENCES type_carte_graphique(id_type),
+    ecran DECIMAL,
+    type_clavier UUID REFERENCES type_clavier(id_type_clavier),
+    prix_unitaire DECIMAL,
+    ref_laptop UUID NOT NULL REFERENCES reference_laptop(id_ref)
+);
+
+create table ram_laptop(
+    id_ram_laptop UUID PRIMARY KEY default gen_random_uuid(),
+    marque UUID NOT NULL REFERENCES marque(id_marque),
+    puissance DECIMAL NOT NULL,
+    type_ram UUID NOT NULL REFERENCES type_ram(id_type),
+    frequence DECIMAL NOT NULL,
+    laptop UUID NOT NULL REFERENCES laptop(id_laptop)
+);
+
+CREATE VIEW V_RAM_LAPTOP AS
+SELECT LAPTOP,
+	SUM(PUISSANCE) AS PUISSANCE,
+	AVG(FREQUENCE) AS FREQUENCE
+FROM RAM_LAPTOP
+GROUP BY LAPTOP;
