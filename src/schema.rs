@@ -8,6 +8,16 @@ diesel::table! {
 }
 
 diesel::table! {
+    ram_ref_laptop (id_ram_ref) {
+        id_ram_ref -> Uuid,
+        marque -> Uuid,
+        puissance -> Numeric,
+        type_ram -> Uuid,
+        frequence -> Numeric,
+    }
+}
+
+diesel::table! {
     reference_laptop (id_ref) {
         id_ref -> Uuid,
         nom -> Text,
@@ -51,6 +61,8 @@ diesel::table! {
     }
 }
 
+diesel::joinable!(ram_ref_laptop -> marque (marque));
+diesel::joinable!(ram_ref_laptop -> type_ram (type_ram));
 diesel::joinable!(reference_laptop -> type_carte_graphique (carte_graphique));
 diesel::joinable!(reference_laptop -> type_clavier (type_clavier));
 diesel::joinable!(reference_laptop -> type_processeur (type_processeur));
@@ -59,6 +71,7 @@ diesel::joinable!(type_processeur -> marque (marque));
 
 diesel::allow_tables_to_appear_in_same_query!(
     marque,
+    ram_ref_laptop,
     reference_laptop,
     type_carte_graphique,
     type_clavier,
