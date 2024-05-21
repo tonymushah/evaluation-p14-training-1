@@ -9,6 +9,14 @@ diesel::table! {
 }
 
 diesel::table! {
+    entree_stock_point_vente (id_entree_stock) {
+        id_entree_stock -> Uuid,
+        entree_date -> Nullable<Timestamp>,
+        sortie_stock -> Uuid,
+    }
+}
+
+diesel::table! {
     laptop (id_laptop) {
         id_laptop -> Uuid,
         type_processeur -> Nullable<Uuid>,
@@ -109,6 +117,7 @@ diesel::table! {
 }
 
 diesel::joinable!(entree_stock -> laptop (laptop));
+diesel::joinable!(entree_stock_point_vente -> sortie_stock (sortie_stock));
 diesel::joinable!(laptop -> reference_laptop (ref_laptop));
 diesel::joinable!(laptop -> type_carte_graphique (carte_graphique));
 diesel::joinable!(laptop -> type_clavier (type_clavier));
@@ -128,6 +137,7 @@ diesel::joinable!(type_processeur -> marque (marque));
 
 diesel::allow_tables_to_appear_in_same_query!(
     entree_stock,
+    entree_stock_point_vente,
     laptop,
     marque,
     point_vente,
