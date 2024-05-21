@@ -20,6 +20,13 @@ diesel::table! {
 }
 
 diesel::table! {
+    point_vente (id_point_vente) {
+        id_point_vente -> Uuid,
+        designation -> Text,
+    }
+}
+
+diesel::table! {
     ram_laptop (id_ram_laptop) {
         id_ram_laptop -> Uuid,
         marque -> Uuid,
@@ -104,6 +111,7 @@ diesel::joinable!(type_processeur -> marque (marque));
 diesel::allow_tables_to_appear_in_same_query!(
     laptop,
     marque,
+    point_vente,
     ram_laptop,
     ram_ref_laptop,
     reference_laptop,
