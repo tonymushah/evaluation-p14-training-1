@@ -52,6 +52,7 @@
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
 		"sass": "^1.77.2",
+		"shadcn-svelte": "^0.10.6",
 		"storybook": "^8.1.1",
 		"svelte": "^4.2.7",
 		"svelte-check": "^3.6.0",
@@ -67,7 +68,10 @@
 	"dependencies": {
 		"@fontsource/source-sans-pro": "^5.0.8",
 		"@urql/svelte": "^4.2.0",
+		"clsx": "^2.1.1",
 		"dotenv": "^16.4.5",
-		"js-cookie": "^3.0.5"
+		"js-cookie": "^3.0.5",
+		"tailwind-merge": "^2.3.0",
+		"tailwind-variants": "^0.2.1"
 	}
 }
