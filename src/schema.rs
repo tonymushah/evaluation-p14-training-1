@@ -14,6 +14,7 @@ diesel::table! {
         puissance -> Numeric,
         type_ram -> Uuid,
         frequence -> Numeric,
+        ref_laptop -> Uuid,
     }
 }
 
@@ -62,6 +63,7 @@ diesel::table! {
 }
 
 diesel::joinable!(ram_ref_laptop -> marque (marque));
+diesel::joinable!(ram_ref_laptop -> reference_laptop (ref_laptop));
 diesel::joinable!(ram_ref_laptop -> type_ram (type_ram));
 diesel::joinable!(reference_laptop -> type_carte_graphique (carte_graphique));
 diesel::joinable!(reference_laptop -> type_clavier (type_clavier));
