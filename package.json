@@ -15,7 +15,9 @@
 		"test:integration": "playwright test",
 		"test:unit": "vitest",
 		"storybook:dev": "storybook dev -p 6006",
-		"storybook:build": "storybook build"
+		"storybook:build": "storybook build",
+		"backend:magasin": "cargo run --bin magasin",
+		"backend:point-vente": "cargo run --bin point_vente"
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "^1.4.0",
