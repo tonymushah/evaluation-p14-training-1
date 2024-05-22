@@ -19,7 +19,9 @@
 		"backend:magasin": "cargo run --bin magasin",
 		"backend:point-vente": "cargo run --bin point_vente",
 		"codegen:magasin": "pnpm backend:magasin && pnpm codegen -c ./app/codegen/magasin.ts",
-		"codegen:point-vente": "pnpm backend:point-vente && pnpm codegen -c ./app/codegen/point-vente.ts"
+		"codegen:point-vente": "pnpm backend:point-vente && pnpm codegen -c ./app/codegen/point-vente.ts",
+		"codegen:all": "pnpm codegen:magasin && pnpm codegen:point-vente",
+		"backend": "pnpm codegen:all && cargo run"
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "^1.4.0",
