@@ -2,6 +2,7 @@
 name = "evaluation-p14-training"
 version = "0.1.0"
 edition = "2021"
+default-run = "evaluation-p14-training"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
