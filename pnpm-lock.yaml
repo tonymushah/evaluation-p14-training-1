@@ -23,16 +23,25 @@ importers:
       js-cookie:
         specifier: ^3.0.5
         version: 3.0.5
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
       tailwind-merge:
         specifier: ^2.3.0
         version: 2.3.0
       tailwind-variants:
         specifier: ^0.2.1
         version: 0.2.1(tailwindcss@3.4.3)
+      uuid:
+        specifier: ^9.0.1
+        version: 9.0.1
     devDependencies:
       '@chromatic-com/storybook':
         specifier: ^1.4.0
         version: 1.4.0(react@18.3.1)
+      '@faker-js/faker':
+        specifier: ^8.4.1
+        version: 8.4.1
       '@graphql-codegen/cli':
         specifier: ^5.0.2
         version: 5.0.2(@types/node@20.12.12)(enquirer@2.4.1)(graphql@16.8.1)(typescript@5.4.5)
@@ -90,6 +99,12 @@ importers:
       '@types/js-cookie':
         specifier: ^3.0.6
         version: 3.0.6
+      '@types/lodash':
+        specifier: ^4.17.4
+        version: 4.17.4
+      '@types/uuid':
+        specifier: ^9.0.8
+        version: 9.0.8
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.0.0
         version: 7.9.0(@typescript-eslint/parser@7.9.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5)
@@ -144,6 +159,9 @@ importers:
       svelte-check:
         specifier: ^3.6.0
         version: 3.7.1(@babel/core@7.24.5)(postcss-load-config@4.0.2(postcss@8.4.38))(postcss@8.4.38)(sass@1.77.2)(svelte@4.2.17)
+      svelte-headless-table:
+        specifier: ^0.18.2
+        version: 0.18.2(svelte@4.2.17)
       svelte2tsx:
         specifier: ^0.7.8
         version: 0.7.8(svelte@4.2.17)(typescript@5.4.5)
@@ -1042,6 +1060,10 @@ packages:
   '@eslint/js@8.57.0':
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  '@faker-js/faker@8.4.1':
+    resolution: {integrity: sha512-XQ3cU+Q8Uqmrbf2e0cIC/QN43sTBSC8KF12u29Mb47tWrt2hAgBXSgpZMj4Ao8Uk0iJcU99QsOCaIL8934obCg==}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0, npm: '>=6.14.13'}
 
   '@fal-works/esbuild-plugin-global-externals@2.1.2':
     resolution: {integrity: sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==}
@@ -5126,11 +5148,21 @@ packages:
       svelte:
         optional: true
 
+  svelte-headless-table@0.18.2:
+    resolution: {integrity: sha512-dnDTaXW5CNzRUjHVbc/Hb0Zv80zU4VcIUnAja6OuZriXvim1AqcWYQCHPRzBGwqj1m3YEHHNvspSzY0o5HzA0A==}
+    peerDependencies:
+      svelte: ^4.0.0
+
   svelte-hmr@0.16.0:
     resolution: {integrity: sha512-Gyc7cOS3VJzLlfj7wKS0ZnzDVdv3Pn2IuVeJPk9m2skfhcu5bq3wtIZyQGggr7/Iim5rH5cncyQft/kRLupcnA==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
     peerDependencies:
       svelte: ^3.19.0 || ^4.0.0
+
+  svelte-keyed@2.0.0:
+    resolution: {integrity: sha512-7TeEn+QbJC2OJrHiuM0T8vMBkms3DNpTE+Ir+NtnVBnBMA78aL4f1ft9t0Hn/pBbD/TnIXi4YfjFRAgtN+DZ5g==}
+    peerDependencies:
+      svelte: ^4.0.0
 
   svelte-preprocess@5.1.4:
     resolution: {integrity: sha512-IvnbQ6D6Ao3Gg6ftiM5tdbR6aAETwjhHV+UKGf5bHGYR69RQvF1ho0JKPcbUON4vy4R7zom13jPjgdOWCQ5hDA==}
@@ -5168,6 +5200,16 @@ packages:
         optional: true
       typescript:
         optional: true
+
+  svelte-render@2.0.1:
+    resolution: {integrity: sha512-RpB0SurwXm4xhjvHHtjeqMmvd645FURb79GFOotScOSqnKK5vpqBgoBPGC0pp+E/eZgDSQ9rRAdn/+N4ys1mXQ==}
+    peerDependencies:
+      svelte: ^4.0.0
+
+  svelte-subscribe@2.0.1:
+    resolution: {integrity: sha512-eKXIjLxB4C7eQWPqKEdxcGfNXm2g/qJ67zmEZK/GigCZMfrTR3m7DPY93R6MX+5uoqM1FRYxl8LZ1oy4URWi2A==}
+    peerDependencies:
+      svelte: ^4.0.0
 
   svelte2tsx@0.7.8:
     resolution: {integrity: sha512-ABK3RDFcy59AqAiU1N5Kxu1RnKrb1GDMrQjLgNgJfE8Q+coCKpjCAPtUVKQM2HnmuqeNWcT3NqfXbE+ZmN5Pow==}
@@ -6737,6 +6779,8 @@ snapshots:
       - supports-color
 
   '@eslint/js@8.57.0': {}
+
+  '@faker-js/faker@8.4.1': {}
 
   '@fal-works/esbuild-plugin-global-externals@2.1.2': {}
 
@@ -11814,7 +11858,18 @@ snapshots:
     optionalDependencies:
       svelte: 4.2.17
 
+  svelte-headless-table@0.18.2(svelte@4.2.17):
+    dependencies:
+      svelte: 4.2.17
+      svelte-keyed: 2.0.0(svelte@4.2.17)
+      svelte-render: 2.0.1(svelte@4.2.17)
+      svelte-subscribe: 2.0.1(svelte@4.2.17)
+
   svelte-hmr@0.16.0(svelte@4.2.17):
+    dependencies:
+      svelte: 4.2.17
+
+  svelte-keyed@2.0.0(svelte@4.2.17):
     dependencies:
       svelte: 4.2.17
 
@@ -11832,6 +11887,15 @@ snapshots:
       postcss-load-config: 4.0.2(postcss@8.4.38)
       sass: 1.77.2
       typescript: 5.4.5
+
+  svelte-render@2.0.1(svelte@4.2.17):
+    dependencies:
+      svelte: 4.2.17
+      svelte-subscribe: 2.0.1(svelte@4.2.17)
+
+  svelte-subscribe@2.0.1(svelte@4.2.17):
+    dependencies:
+      svelte: 4.2.17
 
   svelte2tsx@0.7.8(svelte@4.2.17)(typescript@5.4.5):
     dependencies:
