@@ -1,8 +1,10 @@
 mod error;
+pub mod graphql;
 pub(crate) mod schema;
 pub(crate) mod views;
 
 pub use error::Error;
+use graphql::magasin::MagasinSchema;
 
 pub type Result<T, E = crate::error::Error> = std::result::Result<T, E>;
 
@@ -33,12 +35,14 @@ pub fn etablish_connection() -> DbPool {
 #[derive(Clone)]
 pub struct ServerState {
     pub db: DbPool,
+    pub magasin: MagasinSchema,
 }
 
 impl Default for ServerState {
     fn default() -> Self {
         Self {
             db: etablish_connection(),
+            magasin: MagasinSchema::default(),
         }
     }
 }

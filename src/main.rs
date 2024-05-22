@@ -4,14 +4,17 @@ use actix_web::{
     App, HttpServer,
 };
 use dotenvy::dotenv;
-use evaluation_p14_training::ServerState;
+use evaluation_p14_training::{
+    graphql::magasin::{magasin, magasin_graphiql},
+    ServerState,
+};
 
 use std::env;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     dotenv().ok();
-    let state = ServerState::default();
+    let state = web::Data::new(ServerState::default());
     let port: u16 = env::var("BACKEND_PORT").unwrap().parse().unwrap();
     let adress = env::var("BACKEND_HOST").unwrap();
     println!("Server started at http://{adress}:{port}");
@@ -22,7 +25,9 @@ async fn main() -> std::io::Result<()> {
             .allow_any_origin();
         App::new()
             .wrap(cors)
-            .app_data(web::Data::new(state.clone()))
+            .app_data(state.clone())
+            .service(magasin)
+            .service(magasin_graphiql)
     })
     .bind((adress, port))?
     .run()
