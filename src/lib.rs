@@ -4,7 +4,7 @@ pub(crate) mod schema;
 pub(crate) mod views;
 
 pub use error::Error;
-use graphql::magasin::MagasinSchema;
+use graphql::{magasin::MagasinSchema, point_vente::PointVenteSchema};
 
 pub type Result<T, E = crate::error::Error> = std::result::Result<T, E>;
 
@@ -36,6 +36,7 @@ pub fn etablish_connection() -> DbPool {
 pub struct ServerState {
     pub db: DbPool,
     pub magasin: MagasinSchema,
+    pub point_vente: PointVenteSchema,
 }
 
 impl Default for ServerState {
@@ -43,6 +44,7 @@ impl Default for ServerState {
         Self {
             db: etablish_connection(),
             magasin: MagasinSchema::default(),
+            point_vente: PointVenteSchema::default(),
         }
     }
 }

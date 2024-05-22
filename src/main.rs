@@ -5,7 +5,10 @@ use actix_web::{
 };
 use dotenvy::dotenv;
 use evaluation_p14_training::{
-    graphql::magasin::{magasin, magasin_graphiql},
+    graphql::{
+        magasin::{magasin, magasin_graphiql},
+        point_vente::{point_vente, point_vente_graphiql},
+    },
     ServerState,
 };
 
@@ -28,6 +31,8 @@ async fn main() -> std::io::Result<()> {
             .app_data(state.clone())
             .service(magasin)
             .service(magasin_graphiql)
+            .service(point_vente)
+            .service(point_vente_graphiql)
     })
     .bind((adress, port))?
     .run()
