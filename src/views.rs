@@ -17,7 +17,6 @@ diesel::table! {
 diesel::table! {
     v_laptop (id_laptop) {
         id_laptop -> Uuid,
-        nom -> Text,
         type_processeur -> Uuid,
         carte_graphique -> Uuid,
         ecran -> Numeric,
