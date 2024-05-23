@@ -16,7 +16,6 @@ use crate::schema::entree_stock;
     Selectable,
     Insertable,
     Queryable,
-    AsChangeset,
 )]
 #[diesel(table_name = entree_stock)]
 #[diesel(primary_key(id_entree_stock))]
