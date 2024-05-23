@@ -115,3 +115,10 @@ diesel::table! {
         laptop -> Uuid
     }
 }
+
+diesel::table! {
+    v_point_vente_chiffres(point_vente) {
+        point_vente -> Uuid,
+        sommes -> Numeric
+    }
+}
