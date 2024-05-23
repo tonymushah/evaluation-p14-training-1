@@ -24,6 +24,7 @@ use crate::schema::marque;
 #[diesel(primary_key(id_marque))]
 #[diesel(check_for_backend(diesel::pg::Pg))]
 pub struct Marque {
+    #[graphql(default_with = "Uuid::new_v4()")]
     pub id_marque: Uuid,
     pub desination: String,
 }

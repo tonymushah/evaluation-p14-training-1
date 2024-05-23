@@ -25,6 +25,7 @@ use crate::{schema::ram_laptop, views::v_ram_laptop};
 #[diesel(primary_key(id_ram_laptop))]
 #[diesel(check_for_backend(diesel::pg::Pg))]
 pub struct RamLaptop {
+    #[graphql(default_with = "Uuid::new_v4()")]
     pub id_ram_laptop: Uuid,
     pub marque: Uuid,
     pub puissance: BigDecimal,

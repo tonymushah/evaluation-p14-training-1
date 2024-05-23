@@ -24,6 +24,7 @@ use crate::schema::point_vente;
 #[diesel(primary_key(id_point_vente))]
 #[diesel(check_for_backend(diesel::pg::Pg))]
 pub struct PointVente {
+    #[graphql(default_with = "Uuid::new_v4()")]
     pub id_point_vente: Uuid,
     pub designation: String,
 }
