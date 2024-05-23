@@ -81,6 +81,7 @@ diesel::table! {
         id_sortie_stock -> Uuid,
         date_sortie -> Timestamp,
         point_vente -> Uuid,
+        entree_stock -> Uuid,
     }
 }
 
@@ -140,6 +141,7 @@ diesel::joinable!(ram_ref_laptop -> type_ram (type_ram));
 diesel::joinable!(reference_laptop -> type_carte_graphique (carte_graphique));
 diesel::joinable!(reference_laptop -> type_clavier (type_clavier));
 diesel::joinable!(reference_laptop -> type_processeur (type_processeur));
+diesel::joinable!(sortie_stock -> entree_stock (entree_stock));
 diesel::joinable!(sortie_stock -> point_vente (point_vente));
 diesel::joinable!(sortie_stock_point_vente -> entree_stock_point_vente (entree_stock));
 diesel::joinable!(type_carte_graphique -> marque (marque));
