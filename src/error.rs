@@ -23,16 +23,18 @@ pub enum Error {
     JWT(#[from] jwt::Error),
     #[error("You cannot access this ressource")]
     Forbidden,
-    #[error("the defaulf finition is not found")]
-    StandardFinitionNotFound,
     #[error("The upsert result is not found ")]
     UpsertNotFound,
+    #[error(transparent)]
+    TransfertLaptopModule(#[from] crate::modules::transfert_laptop::Error),
 }
 
 impl ErrorExtensions for Error {
     fn extend(&self) -> async_graphql::Error {
         if let Self::GraphQL(error) = self {
             error.clone()
+        } else if let Self::TransfertLaptopModule(error) = self {
+            error.extend()
         } else {
             async_graphql::Error::new(format!("{}", self)).extend_with(|_err, e| match self {
                 Error::Pool(_) => e.set("code", "DB_POOL"),
@@ -96,8 +98,8 @@ impl ErrorExtensions for Error {
                     jwt::Error::Utf8(_) => e.set("code", "UTF-8"),
                 },
                 Error::Forbidden => e.set("code", "FORBIDDEN"),
-                Error::StandardFinitionNotFound => e.set("code", "DEFAULT_FINITION_NOT_FOUND"),
                 Error::UpsertNotFound => e.set("code", "UPSERT_NOT_FOUND"),
+                Error::TransfertLaptopModule(_) => {}
             })
         }
     }
