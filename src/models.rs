@@ -8,6 +8,7 @@ use diesel::{
 
 use crate::{graphql::OffsetLimit, DbPoolConnection};
 
+pub mod demande_transfert;
 pub mod entree_stock;
 pub mod entree_stock_point_vente;
 pub mod laptop;
