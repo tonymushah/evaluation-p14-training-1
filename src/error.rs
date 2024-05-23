@@ -27,6 +27,8 @@ pub enum Error {
     UpsertNotFound,
     #[error(transparent)]
     TransfertLaptopModule(#[from] crate::modules::magasin::TransfertLaptopModuleError),
+    #[error(transparent)]
+    ValidateTransfertModule(#[from] crate::modules::point_vente::ValidateTransfertModuleError),
 }
 
 impl ErrorExtensions for Error {
@@ -34,6 +36,8 @@ impl ErrorExtensions for Error {
         if let Self::GraphQL(error) = self {
             error.clone()
         } else if let Self::TransfertLaptopModule(error) = self {
+            error.extend()
+        } else if let Self::ValidateTransfertModule(error) = self {
             error.extend()
         } else {
             async_graphql::Error::new(format!("{}", self)).extend_with(|_err, e| match self {
@@ -100,6 +104,7 @@ impl ErrorExtensions for Error {
                 Error::Forbidden => e.set("code", "FORBIDDEN"),
                 Error::UpsertNotFound => e.set("code", "UPSERT_NOT_FOUND"),
                 Error::TransfertLaptopModule(_) => {}
+                Error::ValidateTransfertModule(_) => {}
             })
         }
     }
