@@ -15,6 +15,7 @@ pub mod laptop;
 pub mod magasin_stock;
 pub mod marque;
 pub mod point_vente;
+pub mod point_vente_chiffres;
 pub mod point_vente_stock;
 pub mod ram_laptop;
 pub mod ram_ref_laptop;
