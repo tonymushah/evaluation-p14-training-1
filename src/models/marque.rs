@@ -19,6 +19,7 @@ use crate::schema::marque;
     SimpleObject,
     InputObject,
 )]
+#[graphql(input_name = "MarqueInput")]
 #[diesel(table_name = marque)]
 #[diesel(primary_key(id_marque))]
 #[diesel(check_for_backend(diesel::pg::Pg))]
