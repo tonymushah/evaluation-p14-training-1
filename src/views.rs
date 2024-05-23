@@ -36,7 +36,20 @@ diesel::table! {
 }
 
 diesel::table! {
-    v_demande_transfert(id_demande, entree_magasin) {
+    v_demande_transfert(id_demande, entree_magasin, laptop) {
+        id_demande -> Uuid,
+        date_demande -> Timestamp,
+        point_vente -> Uuid,
+        entree_magasin -> Uuid,
+        date_entree_magasin -> Timestamp,
+        laptop -> Uuid
+    }
+}
+
+diesel::table! {
+    v_entree_stock_point_vente(id_entree_stock, id_demande, entree_magasin, laptop) {
+        id_entree_stock -> Uuid,
+        entree_date -> Timestamp,
         id_demande -> Uuid,
         date_demande -> Timestamp,
         point_vente -> Uuid,
