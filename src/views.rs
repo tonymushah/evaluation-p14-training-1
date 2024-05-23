@@ -122,3 +122,10 @@ diesel::table! {
         sommes -> Numeric
     }
 }
+
+diesel::table! {
+    v_point_vente_perdus_somme(point_vente) {
+        point_vente -> Uuid,
+        sommes -> Numeric
+    }
+}
