@@ -102,3 +102,16 @@ diesel::table! {
         prix -> Numeric
     }
 }
+
+diesel::table! {
+    v_point_vente_stock(id_entree_stock, id_demande, entree_magasin, laptop) {
+        id_entree_stock -> Uuid,
+        entree_date -> Timestamp,
+        id_demande -> Uuid,
+        date_demande -> Timestamp,
+        point_vente -> Uuid,
+        entree_magasin -> Uuid,
+        date_entree_magasin -> Timestamp,
+        laptop -> Uuid
+    }
+}
