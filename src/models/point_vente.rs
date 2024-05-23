@@ -19,6 +19,7 @@ use crate::schema::point_vente;
     SimpleObject,
     InputObject,
 )]
+#[graphql(input_name = "PointVenteInput")]
 #[diesel(table_name = point_vente)]
 #[diesel(primary_key(id_point_vente))]
 #[diesel(check_for_backend(diesel::pg::Pg))]
