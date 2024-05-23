@@ -1,1 +1,1 @@
-pub mod transfert_laptop;
+pub mod magasin;

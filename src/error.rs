@@ -26,7 +26,7 @@ pub enum Error {
     #[error("The upsert result is not found ")]
     UpsertNotFound,
     #[error(transparent)]
-    TransfertLaptopModule(#[from] crate::modules::transfert_laptop::Error),
+    TransfertLaptopModule(#[from] crate::modules::magasin::TransfertLaptopModuleError),
 }
 
 impl ErrorExtensions for Error {
