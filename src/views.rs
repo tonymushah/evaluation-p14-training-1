@@ -74,7 +74,7 @@ diesel::table! {
     v_point_vente_sortie_stock(id_sortie_stock, id_entree_stock, id_demande, entree_magasin, laptop) {
         id_sortie_stock -> Uuid,
         date_sortie -> Timestamp,
-        vente -> bool,
+        vente -> Bool,
         id_entree_stock -> Uuid,
         entree_date -> Timestamp,
         id_demande -> Uuid,
@@ -83,5 +83,22 @@ diesel::table! {
         entree_magasin -> Uuid,
         date_entree_magasin -> Timestamp,
         laptop -> Uuid
+    }
+}
+
+diesel::table! {
+    v_ventes(sortie_stock, entree_stock, id_demande, entree_magasin, laptop) {
+        sortie_stock -> Uuid,
+        date_sortie -> Timestamp,
+        vente -> Bool,
+        entree_stock -> Uuid,
+        entree_date -> Timestamp,
+        id_demande -> Uuid,
+        date_demande -> Timestamp,
+        point_vente -> Uuid,
+        entree_magasin -> Uuid,
+        date_entree_magasin -> Timestamp,
+        laptop -> Uuid,
+        prix -> Numeric
     }
 }
