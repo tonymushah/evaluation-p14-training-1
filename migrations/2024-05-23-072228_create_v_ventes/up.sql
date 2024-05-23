@@ -2,7 +2,6 @@
 CREATE VIEW V_VENTES AS
 SELECT v_pvss.id_sortie_stock AS sortie_stock,
     v_pvss.date_sortie,
-    v_pvss.vente,
     v_pvss.id_entree_stock AS entree_stock,
     v_pvss.entree_date,
     v_pvss.id_demande,

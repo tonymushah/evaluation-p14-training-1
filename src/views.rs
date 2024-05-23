@@ -89,7 +89,6 @@ diesel::table! {
     v_ventes(sortie_stock, entree_stock, id_demande, entree_magasin, laptop) {
         sortie_stock -> Uuid,
         date_sortie -> Timestamp,
-        vente -> Bool,
         entree_stock -> Uuid,
         entree_date -> Timestamp,
         id_demande -> Uuid,
