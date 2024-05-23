@@ -21,6 +21,7 @@ pub mod sortie_stock_point_vente;
 pub mod type_carte_graphique;
 pub mod type_clavier;
 pub mod type_processeur;
+pub mod type_ram;
 
 pub trait Paginate: Sized {
     fn paginate(self, offset: i64, limit: i64) -> Paginated<Self>;
