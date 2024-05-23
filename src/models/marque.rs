@@ -26,5 +26,6 @@ use crate::schema::marque;
 pub struct Marque {
     #[graphql(default_with = "Uuid::new_v4()")]
     pub id_marque: Uuid,
+    #[graphql(name = "designation")]
     pub desination: String,
 }
