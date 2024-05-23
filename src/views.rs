@@ -34,3 +34,14 @@ diesel::table! {
         entree_date -> Timestamp,
     }
 }
+
+diesel::table! {
+    v_demande_transfert(id_demande, entree_magasin) {
+        id_demande -> Uuid,
+        date_demande -> Timestamp,
+        point_vente -> Uuid,
+        entree_magasin -> Uuid,
+        date_entree_magasin -> Timestamp,
+        laptop -> Uuid
+    }
+}
