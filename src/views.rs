@@ -26,3 +26,11 @@ diesel::table! {
         ref_laptop -> Uuid
     }
 }
+
+diesel::table! {
+    v_magasin_stock (id_entree_stock) {
+        id_entree_stock -> Uuid,
+        laptop -> Uuid,
+        entree_date -> Timestamp,
+    }
+}
