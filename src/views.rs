@@ -58,3 +58,14 @@ diesel::table! {
         laptop -> Uuid
     }
 }
+
+diesel::table! {
+    v_transfert_en_cours(id_demande, entree_magasin, laptop) {
+        id_demande -> Uuid,
+        date_demande -> Timestamp,
+        point_vente -> Uuid,
+        entree_magasin -> Uuid,
+        date_entree_magasin -> Timestamp,
+        laptop -> Uuid
+    }
+}
