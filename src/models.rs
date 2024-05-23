@@ -26,6 +26,7 @@ pub mod type_clavier;
 pub mod type_processeur;
 pub mod type_ram;
 pub mod v_entree_stock_point_vente;
+pub mod v_point_vente_sortie_stock;
 
 pub trait Paginate: Sized {
     fn paginate(self, offset: i64, limit: i64) -> Paginated<Self>;
