@@ -17,6 +17,7 @@ pub mod ram_laptop;
 pub mod ram_ref_laptop;
 pub mod reference_laptop;
 pub mod sortie_stock;
+pub mod sortie_stock_point_vente;
 
 pub trait Paginate: Sized {
     fn paginate(self, offset: i64, limit: i64) -> Paginated<Self>;
