@@ -13,6 +13,7 @@ pub mod entree_stock_point_vente;
 pub mod laptop;
 pub mod marque;
 pub mod point_vente;
+pub mod ram_laptop;
 
 pub trait Paginate: Sized {
     fn paginate(self, offset: i64, limit: i64) -> Paginated<Self>;
