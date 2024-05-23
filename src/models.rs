@@ -11,6 +11,7 @@ use crate::{graphql::OffsetLimit, DbPoolConnection};
 pub mod entree_stock;
 pub mod entree_stock_point_vente;
 pub mod laptop;
+pub mod magasin_stock;
 pub mod marque;
 pub mod point_vente;
 pub mod ram_laptop;
