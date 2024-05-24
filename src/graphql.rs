@@ -9,6 +9,13 @@ pub mod point_vente;
 
 pub trait GetPoolConnection {
     fn pool(&self) -> crate::Result<DbPoolConnection>;
+    fn use_pool_blocking<D, U>(&self, usage: U) -> crate::Result<D>
+    where
+        U: FnOnce(DbPoolConnection) -> crate::Result<D>,
+    {
+        let pool = self.pool()?;
+        usage(pool)
+    }
     fn use_pool<D, U>(&self, usage: U) -> impl std::future::Future<Output = crate::Result<D>> + Send
     where
         Self: Sync,
