@@ -31,7 +31,7 @@ pub struct CrudMutations {
 
 #[Object]
 impl MagasinMutations {
-    pub async fn marque(&self) -> CrudMutations {
+    pub async fn cruds(&self) -> CrudMutations {
         CrudMutations::default()
     }
 }
