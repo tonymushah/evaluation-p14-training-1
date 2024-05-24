@@ -1,15 +1,13 @@
-use crate::{generate_upserts, models::marque::Marque};
+use crate::{generate_crud_mutation, models::marque::Marque};
 
 use diesel::prelude::*;
+use uuid::Uuid;
 
-#[derive(Clone, Copy, Debug, Default)]
-pub struct MarqueMutations;
-
-generate_upserts!(
-    MarqueMutations,
-    Marque,
-    Marque,
-    marque,
-    id_marque,
-    crate::schema::marque::dsl
-);
+generate_crud_mutation! {
+    #[mutation] MarqueCrudMutations,
+    #[base] Marque,
+    #[dsl] crate::schema::marque::dsl,
+    #[table] marque,
+    #[id] id_marque => Uuid,
+    #[input] Marque
+}
