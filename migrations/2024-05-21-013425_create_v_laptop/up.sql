@@ -55,7 +55,7 @@ BEGIN
 		return NEW;
 	ELSEIF TG_OP = 'DELETE' then
 		DELETE FROM laptop
-		where id_laptop = OLD.id_laptop;
+		where id_laptop = NEW.id_laptop;
 		return OLD
 	END IF;
 	RETURN NULL;
