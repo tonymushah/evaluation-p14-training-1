@@ -1,14 +1,52 @@
 
+type CrudMutations {
+	marque: MarqueCrudMutations!
+}
 
 
+
+
+type MagasinMutations {
+	marque: CrudMutations!
+}
 
 type MagasinQueries {
 	hello: String!
 }
 
+type Marque {
+	idMarque: UUID!
+	designation: String!
+}
+
+type MarqueCrudMutations {
+	upsert(input: MarqueInput!): Marque!
+	upsertBatch(input: [MarqueInput!]!): [Marque!]!
+	delete(id: UUID!): Marque!
+	deleteBatch(ids: [UUID!]!): [Marque!]!
+}
+
+input MarqueInput {
+	idMarque: UUID! = "63f6e213-65bb-4e57-8152-904b4d8127b9"
+	designation: String!
+}
+
+
+"""
+A UUID is a unique 128-bit number, stored as 16 octets. UUIDs are parsed as
+Strings within GraphQL. UUIDs are used to assign unique identifiers to
+entities without requiring a central allocating authority.
+
+# References
+
+* [Wikipedia: Universally Unique Identifier](http://en.wikipedia.org/wiki/Universally_unique_identifier)
+* [RFC4122: A Universally Unique IDentifier (UUID) URN Namespace](http://tools.ietf.org/html/rfc4122)
+"""
+scalar UUID
 
 directive @include(if: Boolean!) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
 directive @skip(if: Boolean!) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
 schema {
 	query: MagasinQueries
+	mutation: MagasinMutations
 }
