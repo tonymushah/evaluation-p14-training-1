@@ -1,12 +1,13 @@
 pub mod marque;
 pub mod type_clavier;
+pub mod type_processeur;
 pub mod type_ram;
 
 use async_graphql::{Object, SimpleObject};
 
 use self::{
     marque::MarqueCrudMutations, type_clavier::TypeClavierCrudMutations,
-    type_ram::TypeRamCrudMutations,
+    type_processeur::TypeProcesseurCrudMutations, type_ram::TypeRamCrudMutations,
 };
 
 #[derive(Debug, Clone, Copy, Default)]
@@ -17,6 +18,7 @@ pub struct CrudMutations {
     marque: MarqueCrudMutations,
     type_ram: TypeRamCrudMutations,
     type_clavier: TypeClavierCrudMutations,
+    type_processeur: TypeProcesseurCrudMutations,
 }
 
 #[Object]
@@ -54,6 +56,7 @@ macro_rules! generate_crud_mutation {
                         .on_conflict($id_)
                         .do_update()
                         .set(&to_input)
+                        .returning(<$base_>::as_returning())
                         .get_results(&mut pool)?
                         .first()
                         .cloned()
@@ -74,9 +77,10 @@ macro_rules! generate_crud_mutation {
                         .values(&to_input)
                         .on_conflict($id_)
                         .do_nothing()
+                        .returning(<$base_>::as_returning())
                         .get_results(&mut pool)?;
                     for i in &to_input {
-                        res.append(&mut diesel::update($table_).set(i).get_results(&mut pool)?);
+                        res.append(&mut diesel::update($table_).set(i).returning(<$base_>::as_returning()).get_results(&mut pool)?);
                     }
                     Ok(res)
                 })
