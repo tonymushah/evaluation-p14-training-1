@@ -70,8 +70,5 @@ impl<T> Paginated<T> {
 }
 
 pub(crate) fn get_pool(ctx: &async_graphql::Context<'_>) -> crate::Result<crate::DbPoolConnection> {
-    Ok(ctx
-        .data::<crate::DbPool>()
-        .map_err(crate::Error::GraphQL)?
-        .get()?)
+    ctx.pool()
 }
