@@ -1,12 +1,16 @@
+pub mod marque;
+
 use async_graphql::Object;
+
+use self::marque::MarqueMutations;
 
 #[derive(Debug, Clone, Copy, Default)]
 pub struct MagasinMutations;
 
 #[Object]
 impl MagasinMutations {
-    pub async fn test(&self) -> String {
-        String::from("some")
+    pub async fn marque(&self) -> MarqueMutations {
+        MarqueMutations
     }
 }
 
@@ -36,7 +40,7 @@ macro_rules! generate_upserts {
                 })
                 .await?
             }
-            pub async fn upsert_data_batch(
+            pub async fn upsert_batch(
                 &self,
                 ctx: &async_graphql::Context<'_>,
                 input: Vec<$input>,
