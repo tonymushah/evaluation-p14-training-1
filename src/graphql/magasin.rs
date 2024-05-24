@@ -1,15 +1,16 @@
 use std::ops::Deref;
 
 use actix_web::{get, post, web, HttpRequest, HttpResponse};
-use async_graphql::{http::GraphiQLSource, EmptyMutation, EmptySubscription, Schema};
+use async_graphql::{http::GraphiQLSource, EmptySubscription, Schema};
 use async_graphql_actix_web::{GraphQLRequest, GraphQLResponse};
 
-use self::query::MagasinQueries;
+use self::{mutation::MagasinMutations, query::MagasinQueries};
 use crate::ServerState;
 
+pub mod mutation;
 pub mod query;
 
-type MagasinSchemaInner = Schema<MagasinQueries, EmptyMutation, EmptySubscription>;
+type MagasinSchemaInner = Schema<MagasinQueries, MagasinMutations, EmptySubscription>;
 
 #[derive(Default, Clone)]
 pub struct MagasinSchema(MagasinSchemaInner);
