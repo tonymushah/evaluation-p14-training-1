@@ -1,4 +1,4 @@
-use async_graphql::InputObject;
+use async_graphql::{InputObject, SimpleObject};
 use bigdecimal::BigDecimal;
 use diesel::prelude::*;
 use uuid::Uuid;
@@ -17,6 +17,7 @@ use crate::{schema::laptop, views::v_laptop};
     Insertable,
     Queryable,
     AsChangeset,
+    SimpleObject,
 )]
 #[diesel(table_name = v_laptop)]
 #[diesel(primary_key(id_laptop))]
