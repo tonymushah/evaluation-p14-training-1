@@ -56,6 +56,7 @@ BEGIN
 	ELSEIF TG_OP = 'DELETE' then
 		DELETE FROM laptop
 		where id_laptop = OLD.id_laptop;
+		return OLD
 	END IF;
 	RETURN NULL;
 END;
