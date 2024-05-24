@@ -1,8 +1,9 @@
 pub mod marque;
+pub mod type_ram;
 
 use async_graphql::{Object, SimpleObject};
 
-use self::marque::MarqueCrudMutations;
+use self::{marque::MarqueCrudMutations, type_ram::TypeRamCrudMutations};
 
 #[derive(Debug, Clone, Copy, Default)]
 pub struct MagasinMutations;
@@ -10,6 +11,7 @@ pub struct MagasinMutations;
 #[derive(Debug, Clone, Copy, Default, SimpleObject)]
 pub struct CrudMutations {
     marque: MarqueCrudMutations,
+    type_ram: TypeRamCrudMutations,
 }
 
 #[Object]
