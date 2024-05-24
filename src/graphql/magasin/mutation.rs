@@ -1,4 +1,5 @@
 pub mod marque;
+pub mod point_vente;
 pub mod ram_ref_laptop;
 pub mod type_carte_graphique;
 pub mod type_clavier;
@@ -8,7 +9,8 @@ pub mod type_ram;
 use async_graphql::{Object, SimpleObject};
 
 use self::{
-    marque::MarqueCrudMutations, ram_ref_laptop::RamRefLaptopCrudMutations,
+    marque::MarqueCrudMutations, point_vente::PointVenteCrudMutations,
+    ram_ref_laptop::RamRefLaptopCrudMutations,
     type_carte_graphique::TypeCarteGraphiqueCrudMutations, type_clavier::TypeClavierCrudMutations,
     type_processeur::TypeProcesseurCrudMutations, type_ram::TypeRamCrudMutations,
 };
@@ -24,6 +26,7 @@ pub struct CrudMutations {
     type_processeur: TypeProcesseurCrudMutations,
     type_carte_graphique: TypeCarteGraphiqueCrudMutations,
     ram_ref_laptop: RamRefLaptopCrudMutations,
+    point_vente: PointVenteCrudMutations,
 }
 
 #[Object]
